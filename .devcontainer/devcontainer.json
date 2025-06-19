@@ -4,9 +4,7 @@
   "runArgs": ["--env-file", ".devcontainer/.env"], // envの指定
   "workspaceFolder": "/home/user/app",
   "mounts": [
-    "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind", // ワークスペース
-    "source=${localWorkspaceFolder}/.claude,target=/home/user/.claude,type=bind", // .claude
-    "source=${localWorkspaceFolder}/.claude.json,target=/home/user/.claude.json,type=bind" // .claude.json
+    "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind" // ワークスペース
   ],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
@@ -15,16 +13,16 @@
       "userGid": "1000"
     }
   },
-  "initializeCommand": ".devcontainer/initializeCommand.sh", // 初期化コマンド
-  "postCreateCommand": ".devcontainer/postCreateCommand.sh", // 起動時コマンド
   "remoteUser": "user",
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh", // 起動時コマンド
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-azuretools.vscode-docker",
         "GitHub.copilot",
         "oderwat.indent-rainbow",
-        "biomejs.biome"
+        "biomejs.biome",
+        "Anthropic.claude-code"
       ]
     }
   }
