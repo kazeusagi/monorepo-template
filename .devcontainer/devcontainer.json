@@ -1,8 +1,18 @@
 {
-  "name": "Bun Devcontainer Template",
-  "dockerComposeFile": "./compose.yml",
-  "service": "app",
+  "name": "Monorepo Template",
+  "image": "debian:bookworm-slim",
+  "runArgs": ["--env-file", ".devcontainer/.env"], // envの指定
   "workspaceFolder": "/home/user/app",
+  "mounts": ["source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind"],
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "user", // ユーザー名
+      "userUid": "1000", // ユーザーID
+      "userGid": "1000" // グループID
+    }
+  },
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh", // 初期化コマンド
+  "remoteUser": "user",
   "customizations": {
     "vscode": {
       "extensions": [
