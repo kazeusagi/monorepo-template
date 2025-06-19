@@ -5,8 +5,9 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@anthropic-ai/claude-code": "^1.0.29",
-		"@biomejs/biome": "^1.9.4",
-		"@types/bun": "^1.2.3",
-		"lefthook": "^1.11.0"
+		"@biomejs/biome": "^2.0.0",
+		"@types/bun": "^1.2.16",
+		"lefthook": "^1.11.14",
+		"turbo": "^2.5.4"
 	}
 }
