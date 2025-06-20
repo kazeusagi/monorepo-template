@@ -6,9 +6,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
 		"lint": "biome check --diagnostic-level warn",
+    "format": "biome format --write",
     "check-types": "turbo run check-types"
 	},
-	"dependencies": {},
 	"devDependencies": {
 		"@anthropic-ai/claude-code": "^1.0.29",
 		"@biomejs/biome": "^2.0.0",

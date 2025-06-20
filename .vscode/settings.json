@@ -4,10 +4,11 @@
   "editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.biome": "explicit",
+		"source.removeUnusedImports": "explicit",
+		"source.addMissingImports.ts": "explicit",
 		"source.organizeImports.biome": "explicit",
-		"source.addMissingImports.ts": "explicit"
 	},
 
-	// 以下、適宜オンオフしてください。
+	// 以下、不要であれば削除してください
 	"explorer.compactFolders": false, // ネストされたフォルダの折りたたみをしない
 }

@@ -1,11 +1,11 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { Button } from '@mui/material';
 
-interface ButtonProps {
-  children: ReactNode;
-}
+type ButtonProps = {
+  children?: React.ReactNode;
+};
 
-export const Button = ({ children }: ButtonProps) => {
-  return <button type='submit'>{children}</button>;
+export const MyButton = ({ children }: ButtonProps) => {
+  return <Button>{children}</Button>;
 };
