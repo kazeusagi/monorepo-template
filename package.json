@@ -1,12 +1,27 @@
 {
+  "name": "monorepo-template",
+  "private": true,
+  "packageManager": "bun@1.2.16",
 	"scripts": {
-		"lint": "biome check --diagnostic-level warn"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+		"lint": "biome check --diagnostic-level warn",
+    "check-types": "turbo run check-types"
 	},
 	"dependencies": {},
 	"devDependencies": {
 		"@anthropic-ai/claude-code": "^1.0.29",
 		"@biomejs/biome": "^2.0.0",
 		"@types/bun": "^1.2.16",
-		"lefthook": "^1.11.14"
-	}
+		"lefthook": "^1.11.14",
+    "turbo": "^2.5.4",
+    "typescript": "5.8.2"
+	},
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

@@ -1,8 +1,11 @@
 # env
 .env
 
+# Claude
+.claude
+
 # Packages
 node_modules
 
-# Claude
-.claude
+# Turborepo
+.turbo
