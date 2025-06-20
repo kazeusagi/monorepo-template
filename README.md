@@ -1,35 +1,77 @@
-# Bun Dev Container
+# Turborepo Monorepo Template
 
-![skill icons](https://skillicons.dev/icons?i=docker,bun,nodejs,ts,js)
+![skill icons](https://skillicons.dev/icons?i=docker,bun,nextjs,react,ts)
 
-上記に追加で [Biome](https://biomejs.dev/) と [LeftHook](https://lefthook.dev/) を含むテンプレートです。
+Bun + Turborepo + Next.js 15 + React 19を使用したモノレポテンプレートです。
+[Biome](https://biomejs.dev/)と[Lefthook](https://lefthook.dev/)による開発環境も含まれています。
+
+## 技術スタック
+
+- **Runtime**: Bun v1.2.16
+- **Monorepo**: Turborepo v2.5.4
+- **Frontend**: Next.js 15 + React 19
+- **Language**: TypeScript 5.8.2
+- **Linter/Formatter**: Biome v2.0.0
+- **Git Hooks**: Lefthook v1.11.14
+
+## プロジェクト構成
+
+```
+├── apps/
+│   └── web/                 # Next.js 15 アプリケーション
+├── packages/
+│   ├── components/          # 共有Reactコンポーネント
+│   ├── api/                 # 共有APIユーティリティ
+│   └── typescript-config/   # 共有TypeScript設定
+└── .devcontainer/           # Dev Container設定
+```
 
 ## 起動方法
 
-- `.env` の作成  
-`cp .devcontainer/.env.example .devcontainer/.env`
+### 1. 環境ファイルの準備
+```bash
+cp .devcontainer/.env.example .devcontainer/.env
+```
 
-- `VSCode` にて [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) をインストール
+### 2. Dev Container での開発
+1. VSCodeに[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)拡張機能をインストール
+2. `Ctrl+Shift+P` → `Dev Containers: Rebuild and Reopen in Container` を実行
 
-- Dev Container の起動  
-`shift` + `ctrl` + `P` で `Dev Containers: Rebuild and Reopen in Container` を実行
+### 3. 開発サーバーの起動
+```bash
+# 全ワークスペースの開発サーバーを起動
+bun run dev
 
-- Bun の実行確認  
-`bun -v`
+# 個別に起動する場合
+cd apps/web && bun dev
+```
 
-### 初回だけ以下を実行してください。
+## 開発コマンド
 
-- 依存関係のインストール  
-`bun install`
+```bash
+# 依存関係のインストール
+bun install
 
-- GitHook の作成  
-`bunx lefthook install`
+# 開発サーバーの起動（全ワークスペース）
+bun run dev
 
-上記コマンドを実行することで `.git` 内に pre-commit の GitHook が作成されます。  
-この GitHook によってコミット前に静的解析やビルド等の特定コマンドを実行できます。  
-このテンプレートでは `biome check` を実行し、エラーがある場合はコミット出来ないように構築しています。
+# ビルド（全ワークスペース）
+bun run build
 
-## その他
+# リント実行
+bun run lint
 
-このテンプレートではJSランタイムとして `bun` を利用していますが `node` 用のコンテナ定義も作成しています。  
-`.devcontainer/compose.yml` 内で指定している `dockerfile` を変更することで環境を切り替えられます。
+# コードフォーマット
+bun run format
+
+# 型チェック
+bun run check-types
+```
+
+## Git Hooks
+
+Lefthookによりコミット前に以下が自動実行されます：
+- `bun run lint` - Biomeによる静的解析
+- `bun run build` - 全ワークスペースのビルド確認
+
+エラーがある場合はコミットがブロックされます。
